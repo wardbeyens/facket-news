@@ -1,12 +1,10 @@
 <button
-  class="btn btn-sm"
-  [ngClass]="{
-    disabled: isSubmitting,
-    'btn-outline-primary': isLiked,
-    'btn-secundary': !isLiked
-  }"
+  mat-raised-button
+  color="primary"
   (click)="toggleFavorite()"
+  [disabled]="isSubmitting"
 >
-  <i class="ion-heart"></i>
-  {{countLikes}}
+  <mat-icon *ngIf="isLiked">favorite</mat-icon>
+  <mat-icon *ngIf="!isLiked">favorite_border</mat-icon>
+  {{ countLikes }}
 </button>

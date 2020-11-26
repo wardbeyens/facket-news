@@ -69,12 +69,6 @@ import { MatSortModule } from '@angular/material/sort';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-// import {​​ LikeButtonComponent }​​ from './components/like-button/like-button.component';
-
-// import {​​ MatCarouselModule }​​ from 'ng-mat-carousel';
-
-// import {​​ BackButtonComponent }​​ from './components/back-button/back-button.component';;
-
 @NgModule({
   declarations: [
     ListErrorsComponent,
@@ -89,6 +83,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
   ],
   exports: [
     ListErrorsComponent,
@@ -130,12 +127,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-
-    // LikeButtonComponent,
-
-    // BackButtonComponent,
-
-    // MatCarouselModule,
   ],
 })
 export class SharedModule {}
