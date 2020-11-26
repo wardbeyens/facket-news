@@ -1,0 +1,18 @@
+mat-sidenav-container {
+  min-height: calc(100vh - 3rem);
+}
+
+mat-toolbar {
+  height: 3rem;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+#profileImageTop {
+  vertical-align: middle;
+  height: 32px;
+  width: 32px;
+  border-radius: 30px;
+}

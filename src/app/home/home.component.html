@@ -1,0 +1,30 @@
+<div class="home-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <article-list [limit]="12" [config]="listConfig"></article-list>
+      </div>
+      <div class="col-md-2">
+        <div class="sidebar">
+          <p>Popular Tags</p>
+          <div class="tag-list">
+            <a
+              href="#"
+              *ngFor="let tag of tags"
+              (click)="setListTo('all', { tag: tag })"
+              class="tag-default tag-pill"
+            >
+              {{ tag }}
+            </a>
+          </div>
+
+          <div [hidden]="tagsLoaded">Loading tags...</div>
+
+          <div [hidden]="!tagsLoaded || tags.length">
+            No tags are here... yet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

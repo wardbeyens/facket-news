@@ -1,0 +1,70 @@
+<div class="container page-auth">
+  <div id="logo">
+    <span>FACKET</span>
+  </div>
+
+  <div class="boxbox">
+    <mat-nav-list class="list-horizontal nav">
+      <a mat-list-item routerLink="/auth/login" routerLinkActive="active">
+        Login
+      </a>
+      <a mat-list-item routerLink="/auth/register" routerLinkActive="active">
+        Register
+      </a>
+    </mat-nav-list>
+
+    <h1>{{ title }}</h1>
+
+    <form [formGroup]="authForm" (ngSubmit)="submitForm()" class="example-form">
+      <mat-form-field class="example-full-width" *ngIf="authType == 'register'">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          formControlName="username"
+          #username
+          placeholder="test"
+          maxlength="256"
+        />
+        <!-- <mat-hint align="start"
+          ><strong>Don't disclose personal info</strong>
+        </mat-hint> -->
+        <mat-hint align="start">{{ username.value.length }} / 256</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          #email
+          placeholder="test@test.com"
+          maxlength="256"
+        />
+        <!-- <mat-hint align="start"
+          ><strong>Don't disclose personal info</strong>
+        </mat-hint> -->
+        <mat-hint align="start">{{ email.value.length }} / 256</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          #password
+          placeholder="test1234"
+          maxlength="256"
+          type="password"
+        />
+        <!-- <mat-hint align="start"
+          ><strong>Don't disclose personal info</strong>
+        </mat-hint> -->
+        <mat-hint align="start">{{ password.value.length }} / 256</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" id="submit">
+        {{ title }}
+      </button>
+    </form>
+  </div>
+</div>

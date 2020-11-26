@@ -1,0 +1,12 @@
+<button
+  class="btn btn-sm"
+  [ngClass]="{
+    disabled: isSubmitting,
+    'btn-outline-primary': isLiked,
+    'btn-secundary': !isLiked
+  }"
+  (click)="toggleFavorite()"
+>
+  <i class="ion-heart"></i>
+  {{countLikes}}
+</button>

@@ -1,0 +1,28 @@
+.page-auth {
+  text-align: center;
+
+  h1 {
+    font-weight: bold;
+  }
+
+  #logo {
+    margin-top: 5rem;
+  }
+  .boxbox {
+    width: 50vw;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .nav {
+    margin: auto;
+  }
+  .example-full-width {
+    width: 100%;
+  }
+
+  mat-nav-list.list-horizontal {
+    display: flex;
+    flex-direction: row;
+  }
+}
