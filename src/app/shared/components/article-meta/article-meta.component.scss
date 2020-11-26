@@ -1,29 +1,5 @@
-.article-meta {
-  display: block;
-  position: relative;
-  font-weight: 300;
-
-  img {
-    display: inline-block;
-    vertical-align: middle;
-    height: 32px;
-    width: 32px;
-    border-radius: 30px;
-  }
-  .info {
-    margin: 0 1.5rem 0 0.3rem;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1rem;
-  }
-  .info .author {
-    display: block;
-    font-weight: 500 !important;
-  }
-
-  .info .date {
-    color: rgb(88, 36, 36);
-    font-size: 0.8rem;
-    display: block;
-  }
+.cardheaderlink img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }

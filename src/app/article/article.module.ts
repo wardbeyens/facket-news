@@ -1,3 +1,4 @@
+import { ArticleCommentComponent } from './article-comment/article-comment.component';
 import { SharedModule } from './../shared/shared.module';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,7 @@ const articleRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild(
 );
 
 @NgModule({
-  declarations: [ArticleComponent, MarkdownPipe],
+  declarations: [ArticleComponent, ArticleCommentComponent, MarkdownPipe],
   imports: [CommonModule, SharedModule, articleRouting],
 })
 export class ArticleModule {}

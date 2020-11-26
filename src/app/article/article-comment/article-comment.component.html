@@ -1,0 +1,23 @@
+<div class="commentcard">
+  <div class="card-block">
+    <p class="card-text">{{ comment.body }}</p>
+    <div>
+      <div class="card-footer">
+        <img class="comment-author-img" [src]="comment.author.image" />
+        <span class="comment-author">{{ comment.author.username }}</span>
+        <span class="date-posted">
+          {{ comment.createdAt | date: "short" }}
+        </span>
+        <span class="mod-options">
+          <button
+            mat-icon-button
+            [disabled]="!canModify"
+            (click)="deleteClicked()"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

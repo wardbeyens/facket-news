@@ -1,26 +1,32 @@
-<div class="article-preview">
-  <article-meta [article]="article">
+<mat-card class="example-card">
+  <article-meta [article]="article"></article-meta>
+
+  <mat-card-content>
+    <img
+      class="img-responsive"
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+    <a [routerLink]="['/article', article.slug]" class="preview-link">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.description }}</p>
+      <span>Read more...</span>
+      <ul class="tag-list">
+        <li *ngFor="let tag of article.tagList">
+          {{ tag }}
+        </li>
+      </ul>
+    </a>
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- <button mat-button>LIKE</button> -->
     <favorite-button
       (onToggle)="onToggleFavorite()"
       [countLikes]="article.favoritesCount"
       [isLiked]="article.favorited"
       [isSubmitting]="isSubmitting"
-      class="pull-xs-right"
     >
     </favorite-button>
-  </article-meta>
-
-  <a [routerLink]="['/article', article.slug]" class="preview-link">
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.description }}</p>
-    <span>Read more...</span>
-    <ul class="tag-list">
-      <li
-        class="tag-default tag-pill tag-outline"
-        *ngFor="let tag of article.tagList"
-      >
-        {{ tag }}
-      </li>
-    </ul>
-  </a>
-</div>
+    <!-- <button mat-button>SHARE</button> -->
+  </mat-card-actions>
+</mat-card>

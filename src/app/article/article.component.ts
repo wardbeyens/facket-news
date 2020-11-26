@@ -1,3 +1,4 @@
+import { Comment } from './../shared/models/comment.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { CommentsService } from '../core/services/comments.service';
 import { UserService } from '../core/services/user.service';
 import { Article } from '../shared/models/article.model';
 import { User } from '../shared/models/user.model';
+import { platform } from 'process';
 
 @Component({
   selector: 'app-article',
@@ -36,7 +38,7 @@ export class ArticleComponent implements OnInit {
       this.article = data.article;
 
       // Load the comments on this article
-      // this.populateComments();
+      this.populateComments();
     });
 
     // Load the current user's data
@@ -70,30 +72,31 @@ export class ArticleComponent implements OnInit {
     });
   }
 
-  // populateComments() {
-  //   this.commentsService.getAll(this.article.slug).subscribe((comments) => {
-  //     this.comments = comments;
-  //   });
-  // }
+  populateComments() {
+    this.commentsService.getAll(this.article.slug).subscribe((comments) => {
+      this.comments = comments;
+    });
+  }
 
-  // addComment() {
-  //   this.isSubmitting = true;
-  //   this.commentFormErrors = {};
+  addComment() {
+    this.isSubmitting = true;
+    this.commentFormErrors = {};
 
-  //   const commentBody = this.commentControl.value;
-  //   console.log(this.comments);
-  //   this.commentsService.add(this.article.slug, commentBody).subscribe(
-  //     (comment) => {
-  //       this.comments.unshift(comment);
-  //       this.commentControl.reset('');
-  //       this.isSubmitting = false;
-  //     },
-  //     (errors) => {
-  //       this.isSubmitting = false;
-  //       this.commentFormErrors = errors;
-  //     }
-  //   );
-  // }
+    const commentBody = this.commentControl.value;
+    if (commentBody) {
+      this.commentsService.add(this.article.slug, commentBody).subscribe(
+        (comment) => {
+          this.comments.unshift(comment);
+          this.commentControl.reset('');
+          this.isSubmitting = false;
+        },
+        (errors) => {
+          this.isSubmitting = false;
+          this.commentFormErrors = errors;
+        }
+      );
+    }
+  }
 
   onDeleteComment(comment) {
     this.commentsService

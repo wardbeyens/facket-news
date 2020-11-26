@@ -12,3 +12,77 @@ body {
 a {
   text-decoration: none;
 }
+.cardheaderimg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.commentimg {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.comment {
+  margin: 1rem 0;
+}
+
+.right {
+  float: right;
+}
+
+.commentcard {
+  position: relative;
+  display: block;
+  margin-bottom: 0.75rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
+  border: 1px solid #000;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .card-text {
+    padding: 1.25rem;
+  }
+
+  .card-footer {
+    border-top: 1px solid #e5e5e5;
+    box-shadow: none !important;
+    font-size: 0.8rem;
+    font-weight: 300;
+    padding: 0.75rem 1.25rem;
+    background-color: #f5f5f5;
+  }
+
+  .comment-author {
+    padding-left: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .comment-author-img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    border-radius: 30px;
+  }
+
+  .article-page .card .date-posted {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    color: #bbb;
+  }
+  .mod-options {
+    color: #333;
+    font-size: 1rem;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}

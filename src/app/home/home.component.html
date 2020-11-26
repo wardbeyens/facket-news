@@ -18,6 +18,18 @@
             </a>
           </div>
 
+          <mat-chip-list>
+            <a
+              *ngFor="let tag of tags"
+              mat-chip
+              color="primary"
+              selected
+              (click)="setListTo('all', { tag: tag })"
+            >
+              {{ tag }}
+            </a>
+          </mat-chip-list>
+
           <div [hidden]="tagsLoaded">Loading tags...</div>
 
           <div [hidden]="!tagsLoaded || tags.length">
