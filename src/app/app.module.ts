@@ -1,3 +1,4 @@
+import { OverviewModule } from './overview/overview.module';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
 import { ArticleModule } from './article/article.module';
 import { SettingsModule } from './settings/settings.module';
+import { CollectionModule } from './collection/collection.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +37,8 @@ import { SettingsModule } from './settings/settings.module';
     AuthModule,
     ArticleModule,
     SettingsModule,
+    OverviewModule,
+    CollectionModule
   ],
   providers: [
     {

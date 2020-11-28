@@ -1,0 +1,28 @@
+    /*     merge(this.sort.sortChange, this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          // this.isLoadingResults = true;
+
+          this.query.filters.field = this.sort.active;
+          this.query.filters.order = this.sort.direction;
+          this.query.filters.limit = this.limit;
+          this.query.filters.offset = this.limit * this.paginator.pageIndex;
+          console.log(this.query.filters);
+
+          return this.articlesService.tablequery(this.query);
+        }),
+        map((data) => {
+          // Flip flag to show that loading has finished.
+          // this.isLoadingResults = false;
+          this.resultsLength = data.articlesCount;
+          console.log(data.articles);
+          return data.articles;
+        }),
+        catchError(() => {
+          // this.isLoadingResults = false;
+          return of([]);
+        })
+      )
+      .subscribe((data) => (this.data = data));
+      */

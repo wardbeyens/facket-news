@@ -4,8 +4,8 @@
   <mat-card-content>
     <img
       class="img-responsive"
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
+      src="{{ article.picture }}"
+      alt="Photo article"
     />
     <a [routerLink]="['/article', article.slug]" class="preview-link">
       <h1>{{ article.title }}</h1>

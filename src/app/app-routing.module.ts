@@ -28,6 +28,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./editor/editor.module').then((m) => m.EditorModule),
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./overview/overview.module').then((m) => m.OverviewModule),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./collection/collection.module').then(
+            (m) => m.CollectionModule
+          ),
+      },
       // {
       //   path: 'profile',
       //   loadChildren: () => import('./modules/profile/profile.module').then((m) => m.ProfileModule),

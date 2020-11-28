@@ -72,7 +72,7 @@ export class EditorComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.article.tagList.push(value.trim());
+      this.article.tagList.push(value.toLowerCase().replace(/ /g, ''));
     }
 
     // Reset the input value

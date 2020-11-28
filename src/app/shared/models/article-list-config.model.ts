@@ -7,5 +7,7 @@ export class ArticleListConfig {
     favorited?: string;
     limit?: number;
     offset?: number;
+    field?: string;
+    order?: string;
   } = {};
 }

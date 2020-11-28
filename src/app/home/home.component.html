@@ -15,13 +15,10 @@
               selected
               [routerLink]="['/search/tag/', tag]"
               routerLinkActive="active"
+              >{{ tag }}</a
             >
-              {{ tag }}
-            </a>
           </mat-chip-list>
-
           <div [hidden]="tagsLoaded">Loading tags...</div>
-
           <div [hidden]="!tagsLoaded || tags.length">
             No tags are here... yet.
           </div>

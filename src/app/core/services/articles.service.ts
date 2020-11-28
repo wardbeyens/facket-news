@@ -60,4 +60,19 @@ export class ArticlesService {
       new HttpParams({ fromObject: params })
     );
   }
+
+  tablequery(
+    config: ArticleListConfig
+  ): Observable<{ articles: Article[]; articlesCount: number }> {
+    const params = {};
+
+    Object.keys(config.filters).forEach((key) => {
+      params[key] = config.filters[key];
+    });
+
+    return this.ApiService.get(
+      '/articles/tablesearch',
+      new HttpParams({ fromObject: params })
+    );
+  }
 }
