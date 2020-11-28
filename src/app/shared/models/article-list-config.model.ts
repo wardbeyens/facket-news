@@ -9,5 +9,6 @@ export class ArticleListConfig {
     offset?: number;
     field?: string;
     order?: string;
+    status?: string;
   } = {};
 }

@@ -45,7 +45,7 @@ export class ArticleListComponent implements OnInit {
     }
 
     this.articlesService.query(this.query).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.loading = false;
       this.loadedArticles = data.articles;
 

@@ -55,6 +55,13 @@ export class HomeComponent implements OnInit {
       this.userService.currentUser.subscribe((userData: User) => {
         this.listConfig.filters.favorited = userData.username;
       });
+    } else if (this.address === '/thisismine') {
+      if (!this.isAuthenticated) {
+        this.router.navigateByUrl('/auth/login');
+      }
+      this.userService.currentUser.subscribe((userData: User) => {
+        this.listConfig.filters.author = userData.username;
+      });
     } else if (this.address.startsWith('/search/tag/')) {
       this.setListTo('all', {
         tag: this.selectedTag,
@@ -68,6 +75,6 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.listConfig = { type: type, filters: filters };
-    console.log(this.listConfig);
+    // console.log(this.listConfig);
   }
 }

@@ -14,10 +14,10 @@ import { ArticleListConfig } from '../shared/models/article-list-config.model';
   styleUrls: ['./collection.component.scss'],
 })
 export class CollectionComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['createdAt', 'title', 'status'];
+  displayedColumns: string[] = ['createdAt', 'title', 'status', 'author'];
   data: Article[] = [];
   // query opmaak shit
-  limit = 2;
+  limit = 5;
   query: ArticleListConfig = new ArticleListConfig();
   // articlesCount total
   resultsLength = 0;
@@ -31,7 +31,7 @@ export class CollectionComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.query.filters.limit = this.limit;
-    this.runQuery(this.query);
+    this.runQuery();
   }
 
   ngAfterViewInit() {
@@ -44,19 +44,28 @@ export class CollectionComponent implements AfterViewInit, OnInit {
         this.query.filters.order = this.sort.direction;
         this.query.filters.limit = this.limit;
         this.query.filters.offset = this.limit * this.paginator.pageIndex;
-        console.log(this.query.filters);
-        this.runQuery(this.query);
+        // console.log(this.query.filters);
+        this.runQuery();
       });
   }
 
-  runQuery(query) {
-    console.log(query);
+  runQuery() {
+    // console.log(query);
     this.isLoadingResults = true;
-    this.articlesService.tablequery(query).subscribe((data) => {
-      console.log(data);
+    this.articlesService.query(this.query).subscribe((data) => {
+      // console.log(data);
       this.isLoadingResults = false;
       this.data = data.articles;
       this.resultsLength = data.articlesCount;
+    });
+  }
+
+  publish(slug: string, publish: boolean) {
+    this.isLoadingResults = true;
+
+    this.articlesService.publish(slug, publish).subscribe((article) => {
+      this.runQuery();
+      this.isLoadingResults = false;
     });
   }
 }

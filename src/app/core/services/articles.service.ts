@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { Injectable } from '@angular/core';
@@ -46,6 +46,18 @@ export class ArticlesService {
     }
   }
 
+  publish(slug: string, publish: boolean): Observable<Article> {
+    if (publish) {
+      return this.ApiService.post('/articles/' + slug + '/publish').pipe(
+        map((d) => d.article)
+      );
+    } else {
+      return this.ApiService.post('/articles/' + slug + '/unpublish').pipe(
+        map((d) => d.article)
+      );
+    }
+  }
+
   query(
     config: ArticleListConfig
   ): Observable<{ articles: Article[]; articlesCount: number }> {
@@ -57,21 +69,6 @@ export class ArticlesService {
 
     return this.ApiService.get(
       '/articles' + (config.type === 'feed' ? '/feed' : ''),
-      new HttpParams({ fromObject: params })
-    );
-  }
-
-  tablequery(
-    config: ArticleListConfig
-  ): Observable<{ articles: Article[]; articlesCount: number }> {
-    const params = {};
-
-    Object.keys(config.filters).forEach((key) => {
-      params[key] = config.filters[key];
-    });
-
-    return this.ApiService.get(
-      '/articles/tablesearch',
       new HttpParams({ fromObject: params })
     );
   }

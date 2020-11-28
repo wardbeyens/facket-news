@@ -47,6 +47,13 @@ const timelineRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild
         isAuthenticated: HomeAuthResolverService,
       },
     },
+    {
+      path: 'thisismine',
+      component: HomeComponent,
+      resolve: {
+        isAuthenticated: HomeAuthResolverService,
+      },
+    },
   ]
 );
 

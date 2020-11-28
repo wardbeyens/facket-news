@@ -36,7 +36,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.url.subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.authType = data[data.length - 1].path;
       this.title = this.authType === 'login' ? 'LOGIN' : 'SIGN UP';
 
@@ -53,7 +53,7 @@ export class AuthComponent implements OnInit {
     this.isSubmitting = true;
     this.errors = { errors: {} };
     let credentials = this.authForm.getRawValue();
-    console.log(credentials);
+    // console.log(credentials);
 
     this.userService.attemptAuth(this.authType, credentials).subscribe(
       (data) => this.router.navigateByUrl('/'),

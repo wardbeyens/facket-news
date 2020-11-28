@@ -39,6 +39,16 @@ export class ContentComponent implements OnInit {
       icon: 'bookmark_border',
       title: 'Bookmarks',
     },
+    {
+      url: '/thisismine',
+      icon: 'bookmark_border',
+      title: 'thisismine',
+    },
+    {
+      url: '/collection',
+      icon: 'bookmark_border',
+      title: 'collection',
+    },
   ];
 
   constructor(private router: Router, private userService: UserService) {}

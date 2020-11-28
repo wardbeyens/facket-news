@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 const customRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild([
   {
-    path: 'plzendthis',
+    path: 'plzEndMe',
     component: OverviewComponent,
     // canActivate: [AuthGuard],
   },

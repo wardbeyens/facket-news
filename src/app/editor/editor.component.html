@@ -40,6 +40,19 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
+            <mat-label>Picture</mat-label>
+            <input
+              matInput
+              formControlName="picture"
+              #description
+              placeholder="https://pictures.com/picture.jpg"
+            />
+            <mat-hint align="start"
+              ><strong>Make sure this is a URL of an image</strong>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
             <mat-label>Content</mat-label>
             <textarea
               matInput
@@ -73,6 +86,15 @@
                 (matChipInputTokenEnd)="add($event)"
               />
             </mat-chip-list>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option *ngFor="let status of statuses" [value]="status">
+                {{ status }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
 
           <button mat-raised-button color="primary" type="submit" id="submit">

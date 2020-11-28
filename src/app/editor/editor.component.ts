@@ -19,6 +19,7 @@ export class EditorComponent implements OnInit {
   errors: Object = {};
   isSubmitting: boolean = false;
   publishText: string = 'Publish Article';
+  statuses = ['review', 'draft'];
 
   visible = true;
   selectable = true;
@@ -36,14 +37,16 @@ export class EditorComponent implements OnInit {
       title: '',
       description: '',
       body: '',
+      status: '',
+      picture: '',
     });
     this.articleForm.valueChanges.subscribe((value) => {
-      console.log(value);
+      // console.log(value);
       this.updateArticle(value);
     });
 
     this.route.url.subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.publishText =
         data[data.length - 1].path !== 'editor'
           ? 'Edit Article'

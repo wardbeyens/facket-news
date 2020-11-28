@@ -31,7 +31,7 @@ export class OverviewComponent implements OnInit {
     this.query.filters.limit = 99;
 
     this.articlesService.query(this.query).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.loading = false;
       this.loadedArticles = data.articles;
     });
