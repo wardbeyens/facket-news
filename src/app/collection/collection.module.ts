@@ -3,13 +3,14 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CollectionComponent } from './collection.component';
 import { RouterModule } from '@angular/router';
+import { AdminGuard } from '../core/guards/admin.guard';
 
 const collectionRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild(
   [
     {
       path: 'collection',
       component: CollectionComponent,
-      // canActivate: [AuthGuard],
+      canActivate: [AdminGuard],
     },
   ]
 );

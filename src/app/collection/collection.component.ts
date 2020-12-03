@@ -40,9 +40,10 @@ export class CollectionComponent implements AfterViewInit, OnInit {
     merge(this.sort.sortChange, this.paginator.page)
       // .pipe(tap((t) => console.log(t)))
       .subscribe((data) => {
+        console.log(this.paginator);
         this.query.filters.field = this.sort.active;
         this.query.filters.order = this.sort.direction;
-        this.query.filters.limit = this.limit;
+        this.query.filters.limit = this.paginator.pageSize;
         this.query.filters.offset = this.limit * this.paginator.pageIndex;
         // console.log(this.query.filters);
         this.runQuery();

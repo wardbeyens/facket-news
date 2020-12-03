@@ -1,22 +1,7 @@
-<div class="container page-auth">
-  <div id="logo">
-    <span>FACKET</span>
-  </div>
-
-  <div class="boxbox">
-    <mat-nav-list class="list-horizontal nav">
-      <a mat-list-item routerLink="/auth/login" routerLinkActive="active">
-        Login
-      </a>
-      <a mat-list-item routerLink="/auth/register" routerLinkActive="active">
-        Register
-      </a>
-    </mat-nav-list>
-
-    <h1>{{ title }}</h1>
-
+<div class="container-fluid">
+  <div class="row">
     <form [formGroup]="authForm" (ngSubmit)="submitForm()" class="example-form">
-      <mat-form-field class="example-full-width" *ngIf="authType == 'register'">
+      <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input
           matInput
@@ -25,9 +10,7 @@
           placeholder="test"
           maxlength="256"
         />
-        <!-- <mat-hint align="start"
-          ><strong>Don't disclose personal info</strong>
-        </mat-hint> -->
+
         <mat-hint align="start">{{ username.value.length }} / 256</mat-hint>
       </mat-form-field>
 
@@ -40,9 +23,7 @@
           placeholder="test@test.com"
           maxlength="256"
         />
-        <!-- <mat-hint align="start"
-          ><strong>Don't disclose personal info</strong>
-        </mat-hint> -->
+
         <mat-hint align="start">{{ email.value.length }} / 256</mat-hint>
       </mat-form-field>
 
@@ -56,14 +37,17 @@
           maxlength="256"
           type="password"
         />
-        <!-- <mat-hint align="start"
-          ><strong>Don't disclose personal info</strong>
-        </mat-hint> -->
+
         <mat-hint align="start">{{ password.value.length }} / 256</mat-hint>
       </mat-form-field>
 
+      <mat-form-field class="example-full-width">
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="role" #role type="text" readonly />
+      </mat-form-field>
+
       <button mat-raised-button color="primary" type="submit" id="submit">
-        {{ title }}
+        Register Journalist
       </button>
     </form>
     <list-errors [errors]="errors"></list-errors>

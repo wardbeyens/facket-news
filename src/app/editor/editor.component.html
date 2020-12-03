@@ -89,6 +89,15 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
+            <mat-label>Section</mat-label>
+            <mat-select formControlName="section">
+              <mat-option *ngFor="let section of sections" [value]="section.id">
+                {{ section.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
             <mat-label>Status</mat-label>
             <mat-select formControlName="status">
               <mat-option *ngFor="let status of statuses" [value]="status">

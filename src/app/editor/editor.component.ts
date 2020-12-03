@@ -1,3 +1,4 @@
+import { SectionService } from './../core/services/section.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -6,6 +7,7 @@ import { tap } from 'rxjs/operators';
 import { ArticlesService } from '../core/services/articles.service';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { Section } from '../shared/models/section.model';
 
 @Component({
   selector: 'app-editor',
@@ -20,6 +22,7 @@ export class EditorComponent implements OnInit {
   isSubmitting: boolean = false;
   publishText: string = 'Publish Article';
   statuses = ['review', 'draft'];
+  sections: Section[];
 
   visible = true;
   selectable = true;
@@ -31,7 +34,8 @@ export class EditorComponent implements OnInit {
     private ArticlesService: ArticlesService,
     private route: ActivatedRoute,
     private Router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sectionService: SectionService
   ) {
     this.articleForm = this.fb.group({
       title: '',
@@ -39,6 +43,7 @@ export class EditorComponent implements OnInit {
       body: '',
       status: '',
       picture: '',
+      section: '',
     });
     this.articleForm.valueChanges.subscribe((value) => {
       // console.log(value);
@@ -50,11 +55,16 @@ export class EditorComponent implements OnInit {
       this.publishText =
         data[data.length - 1].path !== 'editor'
           ? 'Edit Article'
-          : 'Publish Article';
+          : 'Push Article';
     });
   }
 
   ngOnInit(): void {
+    this.sectionService.getAll().subscribe((sections) => {
+      this.sections = sections;
+      // console.log(sections);
+    });
+
     // If there's an article prefetched, load it
     this.route.data.subscribe((data: { article: Article }) => {
       // hier gaat ie checken
@@ -108,6 +118,7 @@ export class EditorComponent implements OnInit {
   submitForm() {
     this.isSubmitting = true;
 
+    console.log(this.articleForm.value);
     this.updateArticle(this.articleForm.value);
 
     this.ArticlesService.save(this.article).subscribe(

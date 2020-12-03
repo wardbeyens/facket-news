@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-5">
+      <h2>Sections</h2>
+    </div>
+    <div class="col-5">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/sections/add']"
+      >
+        Add Section
+      </button>
+    </div>
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+
+    <div class="example-table-container">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        matSortActive="name"
+        matSortDisableClear
+        matSortDirection="desc"
+        class="mat-elevation-z8 example-table"
+      >
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="delete(element.name)" mat-flat-button color="warn">
+              Delete Section
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
+          <td mat-cell *matCellDef="let element">
+            <a
+              mat-flat-button
+              color="primary"
+              [routerLink]="['sections/edit', element.name]"
+            >
+              Edit Section</a
+            >
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

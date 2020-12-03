@@ -1,3 +1,4 @@
+import { FollowButtonComponent } from './components/follow-button/follow-button.component';
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -76,6 +77,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ArticlePreviewComponent,
     ArticleMetaComponent,
     FavoriteButtonComponent,
+    FollowButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -127,6 +129,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    FollowButtonComponent,
   ],
 })
 export class SharedModule {}

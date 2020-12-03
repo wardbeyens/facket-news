@@ -1,9 +1,11 @@
+import { AuthGuard } from './../core/guards/auth.guard';
 import { SharedModule } from './../shared/shared.module';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { HomeAuthResolverService } from './home-auth-resolver.service';
+import { JournalistGuard } from '../core/guards/journalist.guard';
 
 const homeRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild([
   {
@@ -25,6 +27,7 @@ const timelineRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild
       resolve: {
         isAuthenticated: HomeAuthResolverService,
       },
+      canActivate: [AuthGuard],
     },
     {
       path: 'search/tag/:tag',
@@ -33,6 +36,7 @@ const timelineRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild
         isAuthenticated: HomeAuthResolverService,
       },
     },
+
     {
       path: 'popular',
       component: HomeComponent,
@@ -46,6 +50,7 @@ const timelineRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild
       resolve: {
         isAuthenticated: HomeAuthResolverService,
       },
+      canActivate: [AuthGuard],
     },
     {
       path: 'thisismine',
@@ -53,6 +58,7 @@ const timelineRouting: ModuleWithProviders<RouterModule> = RouterModule.forChild
       resolve: {
         isAuthenticated: HomeAuthResolverService,
       },
+      canActivate: [JournalistGuard],
     },
   ]
 );

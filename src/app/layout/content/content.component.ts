@@ -20,34 +20,9 @@ export class ContentComponent implements OnInit {
       title: 'Home',
     },
     {
-      url: '/editor',
-      icon: 'editor',
-      title: 'Editor',
-    },
-    {
-      url: '/timeline',
-      icon: 'done_outline',
-      title: 'Timeline',
-    },
-    {
       url: '/popular',
       icon: 'star_rate',
       title: 'Popular',
-    },
-    {
-      url: '/bookmarks',
-      icon: 'bookmark_border',
-      title: 'Bookmarks',
-    },
-    {
-      url: '/thisismine',
-      icon: 'bookmark_border',
-      title: 'thisismine',
-    },
-    {
-      url: '/collection',
-      icon: 'bookmark_border',
-      title: 'collection',
     },
   ];
 
@@ -60,6 +35,112 @@ export class ContentComponent implements OnInit {
 
     this.userService.currentUser.subscribe((userData: User) => {
       this.currentUser = userData;
+
+      if (this.currentUser.role == 'Admin') {
+        this.links = [
+          {
+            url: '/',
+            icon: 'home',
+            title: 'Home',
+          },
+          {
+            url: '/editor',
+            icon: 'editor',
+            title: 'Editor',
+          },
+          {
+            url: '/timeline',
+            icon: 'done_outline',
+            title: 'Timeline',
+          },
+          {
+            url: '/popular',
+            icon: 'star_rate',
+            title: 'Popular',
+          },
+          {
+            url: '/bookmarks',
+            icon: 'bookmark_border',
+            title: 'Bookmarks',
+          },
+          {
+            url: '/thisismine',
+            icon: 'bookmark_border',
+            title: 'thisismine',
+          },
+          {
+            url: '/collection',
+            icon: 'bookmark_border',
+            title: 'collection',
+          },
+          {
+            url: '/journalists',
+            icon: 'bookmark_border',
+            title: 'journalists',
+          },
+          {
+            url: '/sections',
+            icon: 'bookmark_border',
+            title: 'sections',
+          },
+        ];
+      } else if (this.currentUser.role == 'Journalist') {
+        this.links = [
+          {
+            url: '/',
+            icon: 'home',
+            title: 'Home',
+          },
+          {
+            url: '/editor',
+            icon: 'editor',
+            title: 'Editor',
+          },
+          {
+            url: '/timeline',
+            icon: 'done_outline',
+            title: 'Timeline',
+          },
+          {
+            url: '/popular',
+            icon: 'star_rate',
+            title: 'Popular',
+          },
+          {
+            url: '/bookmarks',
+            icon: 'bookmark_border',
+            title: 'Bookmarks',
+          },
+          {
+            url: '/thisismine',
+            icon: 'bookmark_border',
+            title: 'thisismine',
+          },
+        ];
+      } else if (this.currentUser.role == 'User') {
+        this.links = [
+          {
+            url: '/',
+            icon: 'home',
+            title: 'Home',
+          },
+          {
+            url: '/timeline',
+            icon: 'done_outline',
+            title: 'Timeline',
+          },
+          {
+            url: '/popular',
+            icon: 'star_rate',
+            title: 'Popular',
+          },
+          {
+            url: '/bookmarks',
+            icon: 'bookmark_border',
+            title: 'Bookmarks',
+          },
+        ];
+      }
     });
   }
 

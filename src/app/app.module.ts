@@ -1,4 +1,4 @@
-import { OverviewModule } from './overview/overview.module';
+import { ProfileModule } from './profile/profile.module';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +15,8 @@ import { AuthModule } from './auth/auth.module';
 import { ArticleModule } from './article/article.module';
 import { SettingsModule } from './settings/settings.module';
 import { CollectionModule } from './collection/collection.module';
+import { JournalistsModule } from './journalists/journalists.module';
+import { SectionsModule } from './sections/sections.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,8 +39,10 @@ import { CollectionModule } from './collection/collection.module';
     AuthModule,
     ArticleModule,
     SettingsModule,
-    OverviewModule,
-    CollectionModule
+    CollectionModule,
+    JournalistsModule,
+    SectionsModule,
+    ProfileModule
   ],
   providers: [
     {

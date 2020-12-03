@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <form
+      [formGroup]="sectionForm"
+      (ngSubmit)="submitForm()"
+      class="example-form"
+    >
+      <mat-form-field class="example-full-width">
+        <mat-label>name</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          #name
+          placeholder="Culture"
+          maxlength="256"
+        />
+
+        <mat-hint align="start">{{ name.value.length }} / 256</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" id="submit">
+        Add section
+      </button>
+    </form>
+    <list-errors [errors]="errors"></list-errors>
+  </div>
+</div>

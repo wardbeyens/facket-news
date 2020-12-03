@@ -1,6 +1,9 @@
+import { AdminGuard } from './core/guards/admin.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 import { ContentComponent } from './layout/content/content.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { JournalistGuard } from './core/guards/journalist.guard';
 
 const routes: Routes = [
   {
@@ -22,16 +25,13 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
+        canActivate: [AuthGuard],
       },
       {
         path: '',
         loadChildren: () =>
           import('./editor/editor.module').then((m) => m.EditorModule),
-      },
-      {
-        path: '',
-        loadChildren: () =>
-          import('./overview/overview.module').then((m) => m.OverviewModule),
+        canActivate: [JournalistGuard],
       },
       {
         path: '',
@@ -39,19 +39,28 @@ const routes: Routes = [
           import('./collection/collection.module').then(
             (m) => m.CollectionModule
           ),
+        canActivate: [AdminGuard],
       },
-      // {
-      //   path: 'profile',
-      //   loadChildren: () => import('./modules/profile/profile.module').then((m) => m.ProfileModule),
-      // },
-      // {
-      //   path: 'settings',
-      //   loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule),
-      // },
-      // {
-      //   path: 'article',
-      //   loadChildren: () => import('./modules/article/article.module').then((m) => m.ArticleModule),
-      // },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./journalists/journalists.module').then(
+            (m) => m.JournalistsModule
+          ),
+        canActivate: [AdminGuard],
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./sections/sections.module').then((m) => m.SectionsModule),
+        canActivate: [AdminGuard],
+      },
+
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+      },
     ],
   },
   {

@@ -35,6 +35,7 @@ export class UserService {
   setAuth(user: User) {
     this.jwtService.saveToken(user.token);
     this.currentUserSubject.next(user);
+    console.log(user.role);
     this.isAuthenticatedSubject.next(true);
   }
 
@@ -52,6 +53,16 @@ export class UserService {
     return this.ApiService.post('/users' + route, { user: credentials }).pipe(
       map((data) => {
         this.setAuth(data.user);
+        return data;
+      })
+    );
+  }
+
+  createJournalist(credentials): Observable<User> {
+    return this.ApiService.post('/users/journalist', {
+      user: credentials,
+    }).pipe(
+      map((data) => {
         return data;
       })
     );

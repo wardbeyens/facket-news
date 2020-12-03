@@ -5,4 +5,5 @@ export class User {
   token: string;
   bio: string;
   image: string;
+  active: boolean;
 }
