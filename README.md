@@ -1,3 +1,8 @@
+# Er was iets fout gelopen met git lokaal net voor het tonen van de presentatie
+
+
+
+
 # FacketNews
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
